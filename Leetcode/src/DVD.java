@@ -1,4 +1,4 @@
-package Leetcode.LeetCode.src;
+package Leetcode.src;
 
 // A simple definition for a DVD.
 public class DVD {

@@ -1,4 +1,4 @@
-package Leetcode.LeetCode.src;
+package Leetcode.src;
 
 public class App {
     public static void main(String[] args) throws Exception {
