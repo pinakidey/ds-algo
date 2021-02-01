@@ -1,5 +1,5 @@
 /* 
-Given two positive integers, find out if twi numbers have same frequency of digits
+Given two positive integers, find out if two numbers have same frequency of digits
 f(182, 281) => true
 */
 

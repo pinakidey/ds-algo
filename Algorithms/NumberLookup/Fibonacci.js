@@ -13,7 +13,7 @@ function fibonacci2N(n, memo={}) { // Must Use Memoization otherwise it becomes 
         return memo[n] = fibonacci2N(n - 1, memo) + fibonacci2N(n - 2, memo);
     }
 
-/* If asked to return n-th number (not number at n-th index) */
+/* If asked to return n-th number (not the number at n-th index) */
 function fib(n) {
     if (n <= 2) return 1;
     return fib(n-1) + fib(n-2);

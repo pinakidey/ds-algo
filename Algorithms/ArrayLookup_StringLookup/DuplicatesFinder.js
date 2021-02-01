@@ -1,5 +1,6 @@
 /* 
-Write a function that takes variable number of arguments (int or char) and checks if there is any duplicates. 
+Write a function that takes variable number of arguments (int or char) 
+and checks if there is any duplicates. 
 Returns bool
 */
 

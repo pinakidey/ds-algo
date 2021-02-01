@@ -3,7 +3,7 @@
 /* O(n) */
 function charCount(S) {
     if(!S) return 0;
-    let counter = {}; // S(n)
+    let counter = {}; // Frequency counter
     const regex = /[A-Z0-9]/i;
 
     for(var char of S) { // loop through the values

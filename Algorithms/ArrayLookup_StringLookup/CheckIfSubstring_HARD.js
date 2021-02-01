@@ -1,11 +1,13 @@
 /* 
 Write a function which takes two strings S1, S2 as arguments
 and checks if any substring of S1 forms a substring of S2 without changing the order 
+
 f("sing", "sting") => true
-Min length of substring must be 2
-Solve by O(N+M)
+f("abc", "acb") => false
 */
 
+
+/* Multiple pointer method */
 // O(M) S(1)
 function isSubsequence(S1,S2) {
     if(!S1.trim() || !S2.trim()) return false;
@@ -24,23 +26,18 @@ function isSubsequence(S1,S2) {
     }
 }
 
-
-
 /* NEED Improvement to S(1) */
 
 /* O(N+M), S(M) */
 /* function isSubsequence(S1, S2) {
     if(!S1.trim() || !S2.trim()) return false;
-
     // List all possible 2-char substrings of S2, count doesn't matter
     let subs={};
     let i=0;
-
     //O(N)
     while(i < S2.length -1) {
         subs[S2.substr(i++, 2)] = 1;
     }
-
     //O(M)
     for(i = 0; i<S1.length; i++) {
         let key = S1.substr(i, 2);
@@ -48,6 +45,7 @@ function isSubsequence(S1,S2) {
     }
     return false;
 } */
+
 
 console.log(isSubsequence("abcd", "hello world"));
 console.log(isSubsequence("sing", "sting"));
