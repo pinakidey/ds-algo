@@ -26,8 +26,7 @@ function isAnagram (A, B) {
 // Can be done using 2 loops only 
 /* O(N) */
 function isAnagramOptimal (A, B) {
-    if(A.length !== B.length) return false
-    // create two freq counters
+    if(A.length !== B.length) return false;
     let counterA = {};
 
     for(let val of A) {val = val.toLowerCase(); counterA[val] = ++counterA[val] || 1}
