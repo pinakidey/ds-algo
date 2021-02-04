@@ -1,6 +1,8 @@
 # Sorting Algorithms
 
-Visualization: https://www.toptal.com/developers/sorting-algorithms
+Visualization: 
+https://visualgo.net/en
+https://www.toptal.com/developers/sorting-algorithms
 
 
 The ideal sorting algorithm would have the following properties:
