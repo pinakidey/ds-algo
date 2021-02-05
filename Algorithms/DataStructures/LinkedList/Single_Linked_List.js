@@ -184,10 +184,10 @@ class LinkedList {
 
 }
 
-var list = new LinkedList();
+/* var list = new LinkedList();
 list.push("A");
 list.push("B");
-list.push("C");
+list.push("C"); */
 /* console.log(list.pop()); // {"C"}
 console.log(list.shift()); // {"A"}
 list.unshift("D");
@@ -202,4 +202,6 @@ console.log(list.insert(0, "G")); //{{"G"},{"D"},{"F"},{"E"}}
 console.log(list.insert(5, "H")); //{{"G"},{"D"},{"F"},{"E"}} //won't insert
 console.log(list.insert(4, "H")); //{{"G"},{"D"},{"F"},{"E"},{"H"}}
 console.log(list.remove(2)); //{{"G"},{"D"},{"E"},{"H"}} */
-console.log(list.reverse()); //{{"H"},{"E"},{"D"},{"G"}}
+//console.log(list.reverse()); //{{"H"},{"E"},{"D"},{"G"}}
+
+export default LinkedList;
