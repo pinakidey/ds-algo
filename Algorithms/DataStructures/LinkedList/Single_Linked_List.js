@@ -158,22 +158,27 @@ class LinkedList {
         return this;
     }
 
-    /* Reverses the linked list */
+    /* Reverses the linked list in place */
+    /* Do this in O(N) time */
     reverse() {
         if(this.length <= 1) return this;
 
-        let i = this.length - 1
-        while(i > 0) {
-            let curr = this.get(i);
-            let next = this.get(i-1);
-            curr.next = next;
-            i--;
-        }
-        let temp = this.tail;
-        this.tail = this.head;
-        this.head = temp;
-        this.tail.next = null;
+        // Swap the head & tail pointers
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let next=null, prev=null;
+        for (let i = 0; i < this.length; i++) {
+            // find the node that is next to `node` and save
+            next = node.next;
+            // set `node.next` to whatever the previous was
+            node.next = prev;
 
+            // make `prev` to be `node`
+            prev = node;
+            // make `node` to be the `next`
+            node = next;
+        }
         return this;
     }
 
@@ -183,7 +188,7 @@ var list = new LinkedList();
 list.push("A");
 list.push("B");
 list.push("C");
-console.log(list.pop()); // {"C"}
+/* console.log(list.pop()); // {"C"}
 console.log(list.shift()); // {"A"}
 list.unshift("D");
 console.log(list.search("B")) // returns {"B"}
@@ -196,5 +201,5 @@ console.log(list.insert(1, "F")); //{{"D"},{"F"},{"E"}}
 console.log(list.insert(0, "G")); //{{"G"},{"D"},{"F"},{"E"}}
 console.log(list.insert(5, "H")); //{{"G"},{"D"},{"F"},{"E"}} //won't insert
 console.log(list.insert(4, "H")); //{{"G"},{"D"},{"F"},{"E"},{"H"}}
-console.log(list.remove(2)); //{{"G"},{"D"},{"E"},{"H"}}
+console.log(list.remove(2)); //{{"G"},{"D"},{"E"},{"H"}} */
 console.log(list.reverse()); //{{"H"},{"E"},{"D"},{"G"}}

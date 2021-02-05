@@ -171,24 +171,28 @@ class LinkedList {
         return this;
     }
 
-    /* Reverses the linked list */
+    /* Reverses the linked list in place */
+    /* Do this in O(N) time */
     reverse() {
         if(this.length <= 1) return this;
 
-        let i = this.length - 1
-        while(i > 0) {
-            let curr = this.get(i);
-            let next = this.get(i-1);
-            curr.next = next;
-            next.prev = curr;
-            i--;
-        }
-        let temp = this.tail;
-        this.tail = this.head;
-        this.head = temp;
-        this.head.prev = null;
-        this.tail.next = null;
+        // Swap the head & tail pointers
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let next=null, prev=null;
+        for (let i = 0; i < this.length; i++) {
+            // find the node that is next to `node` and save
+            next = node.next;
+            // set `node.next` to whatever the previous was
+            node.next = prev;
+            node.prev = next; // only difference with SingleLinkedList:reverse()
 
+            // make `prev` to be `node`
+            prev = node;
+            // make `node` to be the `next`
+            node = next;
+        }
         return this;
     }
 
@@ -208,7 +212,7 @@ list.push("C");
 //list.set(2, "D");
 //console.log(list); // {{A},{B},{D}}
 //console.log(list.remove(1)); //{{A},{C}}
-//console.log(list.reverse()); //{{C},{B},{A}}
+console.log(list.reverse()); //{{C},{B},{A}}
 //console.log(list.insert(1, "D")); //{{A},{D},{B},{C}}
 //console.log(list.search("C")); //{C}
 
