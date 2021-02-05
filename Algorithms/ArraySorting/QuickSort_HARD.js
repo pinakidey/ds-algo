@@ -27,7 +27,8 @@ Increase i. Loop again.
 */
 
 
-/* Returns the deserved index/position of the pivot arr[start]*/
+/* Returns the deserved index/position of the pivot arr[start] */
+/* O(N) for comparison per decomposition */
 function pivot(arr=[], start=0, end=arr.length-1) {
     let pivot = arr[start];
     let swapIndex = start;
@@ -42,7 +43,11 @@ function pivot(arr=[], start=0, end=arr.length-1) {
     return swapIndex;
 }
 
-
+/* O(logN) for decomposition */
+/* If the array is already sorted, ie. the worst case, having O(N) decompositions.
+Solution, instead of picking the first item as the pivot, pick another, e.g. the middle one.
+If the selected pivot is always minimum/maximum, you can't avoid the worst case.
+*/
 function quicksort(A=[], left=0, right=A.length-1) {
     //if(A.length<=1) return A;
     if(left<right) {
