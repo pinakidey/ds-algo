@@ -18,11 +18,14 @@ class Node {
         this.next = null;
     }
 }
-
+/**
+ * Single-LinkedList implelemtation of Queue
+ * Time complexity: Insertion/Removal: O(1), Search/Access: O(N)
+ */
 class Queue {
     constructor(){
-        this.first = 0;
-        this.last = 0;
+        this.first = null;
+        this.last = null;
         this.size = 0;
     }
 
