@@ -3,10 +3,9 @@
 Algorithm		Average	    Worst case
 Space		    O(n)	    O(n)
 Search		    O(n)	    O(n)
+Find-min/max	O(1)	    O(1)        // always the root
 Insert		    O(1)	    O(log n)    // due to bubble up
-Find-min/mx		O(1)	    O(1)        // always the root
 Remove-min/max	O(log n)	O(log n)    // due to bubble down
-
 */
 
 

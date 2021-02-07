@@ -27,7 +27,7 @@
   - Usage: Priority Queue, Graph Traversing
   - **Performance: Insert O(1) ~ O(logN), Find is always O(1)**
   
-- Priority Queue (Each elements has a priority. Elements with higher priority are serverd before elements with lower priority)
+- Priority Queue [Each elements has a priority. Elements with higher priority (often marked by a lower number) are serverd before elements with lower priority]
 - 
 ### HashTable
 ### HashMap
