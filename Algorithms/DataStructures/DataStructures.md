@@ -20,9 +20,15 @@
     - "PostOrder" : For each node, visit left -> visit right -> visit node.
     - "InOrder" : For each node, visit left -> visit node -> visit right. (when used on a BST, elements are in order i.e. sorted)
 ### Heap
-- Binary Heap
-  - Max Heap
-  - Min Heap
+- Binary Heap (Each node can have maximum of 2 children, but unlike BST there is no order, and heap is as compact as possible i.e., every left & right are filled before moving down, left children are filled out first)
+  - Types
+    - Max Binary Heap (Parent node is always **larger** than all of its children)
+    - Min Binary Heap (Parent node is always **smaller** than all of its children)
+  - Usage: Priority Queue, Graph Traversing
+  - **Performance: Insert O(1) ~ O(logN), Find is always O(1)**
+  
+- Priority Queue (Each elements has a priority. Elements with higher priority are serverd before elements with lower priority)
+- 
 ### HashTable
 ### HashMap
 ### Graph
@@ -40,7 +46,6 @@
 ### Djikstra's Algorithm
 - Weigthed Graph
 - Waalking Through Algorithm
-- Priority Queue
 ### Dynamic Programming
 - Overlapping Problems
 - Optimal Substructure
