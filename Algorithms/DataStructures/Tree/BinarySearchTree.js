@@ -129,7 +129,6 @@ class BinarySearchTree {
         if(!this.root) return [];
         let visited = [];
 
-
         const traverseLeft = (node) => {
             if(node && node.left !== null) {
                 traverse(node.left);
@@ -140,7 +139,6 @@ class BinarySearchTree {
                 traverse(node.right);
             }
         }
-
 
         const traverse = (node) => {
             switch(order) {

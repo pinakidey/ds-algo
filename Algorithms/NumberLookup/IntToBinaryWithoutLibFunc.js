@@ -18,4 +18,4 @@ function solution(n) {
     return bin; 
 }
 
-console.log(solution(5));
+console.log(solution(8));
