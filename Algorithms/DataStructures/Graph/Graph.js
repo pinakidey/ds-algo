@@ -150,7 +150,7 @@ class Graph {
 }
 
 
-let graph = new Graph();
+/* let graph = new Graph();
 graph.addVertex("Tokyo");
 graph.addVertex("San Francisco");
 graph.addVertex("Las Vegas");
@@ -172,4 +172,7 @@ graph.addEdge("New York", "San Francisco");
 console.log(graph);
 graph.DFS("Delhi");
 graph.DFSIterative("Delhi");
-graph.BFS("Delhi");
+graph.BFS("Delhi"); */
+
+
+export default Graph;

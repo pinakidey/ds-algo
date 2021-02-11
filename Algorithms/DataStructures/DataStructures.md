@@ -62,9 +62,13 @@
   - DFS Iterative
 ### Hashing
 ### Matrix
-### Djikstra's Algorithm
+### Dijkstra's Algorithm
 - Weigthed Graph
 - Waalking Through Algorithm
+
+### Prim's Algorithm
+
+## KMP Algorithm
 ### Dynamic Programming
 - Overlapping Problems
 - Optimal Substructure
