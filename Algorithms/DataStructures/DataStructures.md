@@ -62,11 +62,14 @@
   - DFS Iterative
 ### Hashing
 ### Matrix
-### Dijkstra's Algorithm
+### Dijkstra's Algorithm [O(|E|+|V|log|V|)]
 - Weigthed Graph
 - Waalking Through Algorithm
 
-### Prim's Algorithm
+### A* Algorithm
+- Difference with Dijkstra's Algorithm
+- Why is it faster?
+### Prim's Algorithm [ O(|V+E| * logV) ]
 
 ## KMP Algorithm
 ### Dynamic Programming

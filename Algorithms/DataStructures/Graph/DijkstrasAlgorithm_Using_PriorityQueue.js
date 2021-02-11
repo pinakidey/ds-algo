@@ -1,4 +1,5 @@
 import WeightedGraph from "./WeightedGraph.js"
+import PriorityQueue from "./../Heap/PriorityQueue_MinHeap.js"
 
 
 /* 
@@ -56,68 +57,52 @@ function findShortestPath(start, end) {
 
     // Check if valid vertex
     if(!graph.adjacencyList[start] || !graph.adjacencyList[end]) return null;
-    if(start === end) return 0;
+    if(start === end) return [[start, end], 0];
 
-    let distFromStart = {};
-    let visited = {};
+    let nodes = new PriorityQueue();
+    let distances = {};
     let previous = {};
 
-    // Initialize distFromStart with Infinity for each vertex
+    // Set initial state
     for(let vertex in graph.adjacencyList) { //O(|V|)
-        distFromStart[vertex] = Infinity;
+        distances[vertex] = vertex === start ? 0 : Infinity;
+        nodes.enqueue(vertex, vertex === start ? 0 : Infinity);
+        previous[vertex] = null;
     }
-    // Set distance from start to start as 0
-    distFromStart[start] = 0;
 
-    // A DFS function to traverse 
-    (function traverse(node){
-        console.log("Visited: " + node);
-        // Mark this node as visited
-        visited[node] = true;
-
-        let vertex = graph.adjacencyList[node];
+    // Loop as long as there is an item in the PriorityQueue 
+    while(nodes.values.length) {
+        // Dequeue the node with lowest priority
+        let vertex = nodes.dequeue().val; // {val: xx, priority: y}
+        if(vertex === end) break;
         
-        // For each neighbor
-        for(let neighbor of vertex) { // O(|E|)
-            // Save the total distance from start if it's lower than before            
-            let sumOfDist = neighbor.weight + distFromStart[node]
-            if(sumOfDist < distFromStart[neighbor.node]) {
-                distFromStart[neighbor.node] = sumOfDist;
-                // Then save the previous node, i.e. how we reached there
-                previous[neighbor.node] = node;
+        // For each of its neighbor
+        if(vertex || distances[vertex] !== Infinity) {
+            for(let neighbor of graph.adjacencyList[vertex]) { // O(|E|)
+                // Save the total distance from start if it's lower than before            
+                let sumOfDist = neighbor.weight + distances[vertex];
+                if(sumOfDist < distances[neighbor.node]) {
+                    // Set distance
+                    distances[neighbor.node] = sumOfDist;
+                    // Set previous
+                    previous[neighbor.node] = vertex;
+                    // Add to PriorityQueue
+                    nodes.enqueue(neighbor.node, sumOfDist);
+                }
             }
         }
-
-        // Find the known node nearest to start that is yet to be visited
-
-        let min = {node: null, val: Infinity};
-        for(let node in distFromStart) { // O(|V|)
-            if(!visited[node] && distFromStart[node] < min.val) {
-                min = {node, val: distFromStart[node]}
-            }
-        }
-
-        // If non-visited nearest node found, recurse
-        if(min.node) {
-            traverse(min.node); //O(log|V|)
-        } else {
-            return;
-        }
-
-    })(start)
-
-    console.log(previous);
-    let path = [end];
-    let last = end;
-    while(last !== start && Object.keys(previous).length){
-        path.push(previous[last]);
-        let temp = previous[last];
-        delete previous[last];
-        last = temp;
     }
-    console.log(`Shortest Path between ${start} and ${end} is ${path.reverse().join("-->")} with distance ${distFromStart[end]}`);
-    
-    return distFromStart[end];
+     // Create the Path
+    let path = [];
+    let last = end;
+    while(previous[last]){
+        path.push(last);
+        last = previous[last];
+    }
+    path.push(start);
+
+    // Return [path, distance]
+    return [path.reverse(), distances[end]]
 }
 
 

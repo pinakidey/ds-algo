@@ -40,7 +40,7 @@ class PriorityQueue {
         let node = new Node(val, priority);
         this.values.push(node);
 
-        //Bubble-up
+        //Bubble-up [We can also use sort(), however that will cost O(N*logN)]
         let L = this.values.length;
         let i = L-1;
         while(i>0) {
@@ -102,7 +102,7 @@ const swap = (A, i=0, j=0) => {
     return [A[i], A[j]] = [A[j], A[i]];
 }
 
-var queue = new PriorityQueue();
+/* var queue = new PriorityQueue();
 
 queue.enqueue("word", 1).enqueue("vscode", 0)
 .enqueue("excel", 1).enqueue("powerpoint", 2)
@@ -113,4 +113,7 @@ console.log(queue);
 console.log(queue.dequeue());
 console.log(queue.dequeue());
 console.log(queue.dequeue());
-console.log(queue);
+console.log(queue); */
+
+
+export default PriorityQueue;
