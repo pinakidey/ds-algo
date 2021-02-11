@@ -2,25 +2,40 @@
 //0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 
 
-/* Using Recursion O(2N) => O(N) */
-function fibonacci2N(n, memo={}) { // Must Use Memoization otherwise it becomes O(2^N)
+/* Using Recursion with Memoization O(N) */
+function fibonacciMemo(n, memo={}) { // Using Memoization
         //console.log(n, memo);
         if (memo[n]) return memo[n];
         
         if (n === 0) return 0; //if series starts with 0, make this 0. Otherwise, 1
-        if (n === 1) return 1;
+        if (n <= 2) return 1;
+        // we can initialize memo=[0,1,1]. Then we can get rid of above 2 ifs, first if would need to compare with undefined
 
-        return memo[n] = fibonacci2N(n - 1, memo) + fibonacci2N(n - 2, memo);
+        return memo[n] = fibonacciMemo(n - 1, memo) + fibonacciMemo(n - 2, memo);
     }
 
-/* If asked to return n-th number (not the number at n-th index) */
+/* Using Iteration with Tabulation O(N) */
+// Better Space Complexity
+function fibonacciTabulation(n) {
+    if (n === 0) return 0;
+    if (n <= 2) return 1;
+    let fibNums = [0,1,1];
+    for (let i = 3; i <= n; i++) {
+        fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+        
+    }
+    return fibNums[n];
+}    
+/* Worst solutions */
+// O(2^N), actually O(1.6^N)
 function fib(n) {
+    if (n === 0) return 0;
     if (n <= 2) return 1;
     return fib(n-1) + fib(n-2);
 }
 
 /* O(N) */
-function fibonacciN(num){ //Always Use this, unless asked to use recursion
+function fibonacciN(num){
     var a = 1, b = 0, temp;
     
     while (num > 0){
@@ -34,10 +49,11 @@ function fibonacciN(num){ //Always Use this, unless asked to use recursion
     return b;
     }
 
-const index = 6;
-//console.log(fibonacci2RaisedN(index));
-//console.log(fibonacci2N(index));
-console.log(fibonacci2N(index));
+const index = 10000;
+
+console.log(fibonacciMemo(index)); // StackOverflow @ 10000
+console.log(fibonacciTabulation(index)); // No StackOverflow, better space complexity
+console.log(fibonacciN(index));
 
 
 /* 

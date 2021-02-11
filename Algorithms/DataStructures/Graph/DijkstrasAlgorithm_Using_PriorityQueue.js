@@ -47,8 +47,8 @@ graph.addEdge("New York", "San Francisco", 8);
  * @param {String} end - name of destination vertex
  * 
  * @description Algorithm
- * - Pick the node with the smallest known weight/distance to visit first.
- * - Move to the new node. Mark as visited.
+ * - Pick the node with the smallest known weight/distance from start to visit first. (Use a PriorityQueue here)
+ * - Move to the new node.
  * - Look at each of its neighbors.
  * - For each neighbor, calculate the sum of distance from the starting node
  * - If the distance is lesser than prev saved value, save the shorter distance
@@ -64,16 +64,17 @@ function findShortestPath(start, end) {
     let previous = {};
 
     // Set initial state
-    for(let vertex in graph.adjacencyList) { //O(|V|)
+    for(let vertex in graph.adjacencyList) { //O(V) ~ O(VLogV)
         distances[vertex] = vertex === start ? 0 : Infinity;
-        nodes.enqueue(vertex, vertex === start ? 0 : Infinity);
+        nodes.enqueue(vertex, vertex === start ? 0 : Infinity); //O(1) ~ O(LogV)
         previous[vertex] = null;
     }
 
     // Loop as long as there is an item in the PriorityQueue 
     while(nodes.values.length) {
         // Dequeue the node with lowest priority
-        let vertex = nodes.dequeue().val; // {val: xx, priority: y}
+        let vertex = nodes.dequeue().val; // {val: xx, priority: y} //O(logV)
+        // Break if end is reached
         if(vertex === end) break;
         
         // For each of its neighbor
@@ -107,4 +108,5 @@ function findShortestPath(start, end) {
 
 
 
-console.log(findShortestPath("New York", "Pyongyang"));
+console.log(findShortestPath("New York", "Pyongyang")); // [ [ 'New York', 'San Francisco', 'Beijing', 'Pyongyang' ], 22 ]
+console.log(findShortestPath("Dubai", "Dubai")); //[ [ 'Dubai', 'Dubai' ], 0 ]

@@ -71,11 +71,13 @@
 - Why is it faster?
 ### Prim's Algorithm [ O(|V+E| * logV) ]
 
-## KMP Algorithm
+### KMP Algorithm
 ### Dynamic Programming
-- Overlapping Problems
-- Optimal Substructure
+A method of solving complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once and storing their solutions.
+- Overlapping SubProblems (e.g. Fibonacci series)
+- Optimal Substructure (e.g. Fibonacci series, finding shortest path in a graph)
 - Memoization
+- Tabulation (Better space complexity)
 ### Advanced Data Structure
 - Trie
 - LRU Cache
